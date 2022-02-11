@@ -1,0 +1,1 @@
+git+https://github.com/r-f-g/pytest-operator@juju-crashdump#egg=ops

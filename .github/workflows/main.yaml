@@ -1,0 +1,20 @@
+name: Run tests with Tox
+on: [push, pull_request]
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    name: Integration test
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Setup operator environment
+        uses: r-f-g/actions-operator@tools/add-juju-crashdump
+        with:
+          provider: lxd
+      - name: Run test
+        run: tox -e integration
